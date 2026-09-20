@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://b4ltg2ckr5l6f"]
+
+[ext_resource type="Script" uid="uid://bgl8bkavjiotj" path="res://scripts/mob.gd" id="1_1qmh0"]
+[ext_resource type="Texture2D" uid="uid://ck7f2ak17k3sy" path="res://assets/art/slime.png" id="1_ieysi"]
+[ext_resource type="Texture2D" uid="uid://cttscl5aq3mms" path="res://assets/art/slime_walk.png" id="2_cixyi"]
+[ext_resource type="Texture2D" uid="uid://dxa74ljhbbjli" path="res://assets/art/slime_squashed.png" id="3_7ulmv"]
+[ext_resource type="Texture2D" uid="uid://dnp5dkd82hpur" path="res://assets/art/slimeBlue.png" id="4_pcqmr"]
+[ext_resource type="Texture2D" uid="uid://ccooqwkhedoxl" path="res://assets/art/slimeBlue_blue.png" id="5_jbnni"]
+[ext_resource type="Texture2D" uid="uid://d0sujjuft28r8" path="res://assets/art/slimeBlue_squashed.png" id="6_yscv0"]
+[ext_resource type="Texture2D" uid="uid://cq8jsiag2uu64" path="res://assets/art/slimeGreen.png" id="7_eqsov"]
+[ext_resource type="Texture2D" uid="uid://dhleo7obf7q7s" path="res://assets/art/slimeGreen_squashed.png" id="8_wvrms"]
+[ext_resource type="Texture2D" uid="uid://bkvqfr4y4ddr5" path="res://assets/art/slimeGreen_walk.png" id="9_h0ign"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jfba5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ieysi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_cixyi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_7ulmv")
+}],
+"loop": 1,
+"name": &"fly",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_pcqmr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_jbnni")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_yscv0")
+}],
+"loop": 1,
+"name": &"swim",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_eqsov")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_wvrms")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_h0ign")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 4.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jbnni"]
+radius = 24.0
+height = 72.0
+
+[node name="Mob" type="RigidBody2D" unique_id=2124820206 groups=["mobs"]]
+collision_mask = 0
+gravity_scale = 0.0
+script = ExtResource("1_1qmh0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=951785769]
+position = Vector2(1, 0)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_jfba5")
+animation = &"swim"
+frame_progress = 0.1595384
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2012256261]
+position = Vector2(2, 2)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_jbnni")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1679254046]
